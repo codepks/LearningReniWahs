@@ -152,9 +152,16 @@ It's initially set to nullptr to indicate that no module is loaded yet.
 The above statement is same as : ```using fetchStudentFactory = std::add_pointer<CartMan::ITeacher*()>::type;``` and ```typedef CartMan::ITeacher* (*fetchStudentFactory)();```
 
 ```auto pfnMyFunction = (fetchStudentFactory)GetProcAddress(hubModule, "fetchObject");```
-This block attempts to locate a specific function named "initPlugin" within the loaded library:
+This block attempts to locate a specific function named "initPlugin" within the loaded library.<br>
+The function pointer retrieved from GetProcAddress is typically a generic pointer type (e.g., void*). This doesn't provide any information about the function's arguments and return value, which can lead to errors if used incorrectly.
 
-```GetProcAddress()```: A Windows API function that retrieves the address of a named function from the specified module.<br>
+<br> One canuse the below instead
+```
+void* pfnMyFunction = GetProcAddress(hubModule, "fetchTeacher");
+CartMan::ITeacher* (*actualFetchTeacher)(void) = (CartMan::ITeacher*(*)())pfnMyFunction;
+```
+
+```GetProcAddress()```: A Windows API function that retrieves the address of a named function from the specified module.<br> it it returns `void*` pointer
 
 ```FARPROC``` : A pointer type for holding function addresses.
 
