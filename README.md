@@ -149,6 +149,7 @@ This line declares a variable named hubModule to hold a handle to a module (a li
 It's initially set to nullptr to indicate that no module is loaded yet.
 
 ```using fetchStudentFactory = std::add_pointer<CartMan::IStudent*()>::type;```
+The above statement is same as : ```using fetchStudentFactory = std::add_pointer<CartMan::ITeacher*()>::type;``` and ```typedef CartMan::ITeacher* (*fetchStudentFactory)();```
 
 ```auto pfnMyFunction = (fetchStudentFactory)GetProcAddress(hubModule, "fetchObject");```
 This block attempts to locate a specific function named "initPlugin" within the loaded library:
