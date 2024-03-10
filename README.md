@@ -27,13 +27,13 @@ This file is one solution made in Visual Studio
 #include <iostream>
 
 #ifdef MODEL_ENGINE_EXPORTS
-#	define MODEL_ENGINE_API __declspec(dllexport)
+#	define STUDENT_ENGINE_API __declspec(dllexport)
 #else
-#	define MODEL_ENGINE_API __declspec(dllimport)
+#	define STUDENT_ENGINE_API __declspec(dllimport)
 #endif
 
 namespace CartMan{
-	class MODEL_ENGINE_API IStudent	{
+	class STUDENT_ENGINE_API IStudent	{
 	public:
 		virtual void setName(std::string name) = 0;
 		virtual void setRoll(int roll) = 0;
@@ -45,7 +45,7 @@ namespace CartMan{
 //this is the exposure part
 extern "C"
 {
-	extern MODEL_ENGINE_API CartMan::IStudent* fetchObject();
+	extern STUDENT_ENGINE_API CartMan::IStudent* fetchObject();
 }
 ```
 
