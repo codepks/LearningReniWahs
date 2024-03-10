@@ -22,6 +22,9 @@ This file is one solution made in Visual Studio
 - In "Solution -> Properties -> General -> Configuration Properties" one can set the output to be a dll
 - This MODEL_ENGINE_EXPORTS is defined in Solution -> Properties -> C/C++ -> Preprocessor
 
+**Exaplaining Macros**
+- In the Visual Studio solution where I have defined the STUDENT_ENGINE_API macro in the solution-> proeprties, there STUDENT_ENGINE_API will be taken as dllexport else in the solutions where this macro is not defined int the properties it will take it as dllimport
+
 ```
 #pragma once
 #include <iostream>
