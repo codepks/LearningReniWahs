@@ -118,7 +118,8 @@ CartMan::IStudent* getStudentObject()
 
     if (hubModule != nullptr)
     {
-        using fetchStudentFactory = std::add_pointer<CartMan::IStudent*()>::type;
+	//using fetchStudentFactory = std::add_pointer<CartMan::IStudent*()>::type;
+        typedef CartMan::IStudent* (*fetchStudentFactory)();
         auto pfnMyFunction = (fetchStudentFactory)GetProcAddress(hubModule, "fetchObject");
         if(pfnMyFunction != nullptr)
         {
@@ -140,3 +141,20 @@ int main()
     std::cout << object->getRollNum();
 }
 ```
+
+**Explanation**
+
+```hubModule = LoadLibrary(L"StudentInterface.dll");```
+This line declares a variable named hubModule to hold a handle to a module (a library or executable file). <br>
+It's initially set to nullptr to indicate that no module is loaded yet.
+
+```using fetchStudentFactory = std::add_pointer<CartMan::IStudent*()>::type;```
+
+```auto pfnMyFunction = (fetchStudentFactory)GetProcAddress(hubModule, "fetchObject");```
+This block attempts to locate a specific function named "initPlugin" within the loaded library:
+
+```GetProcAddress()```: A Windows API function that retrieves the address of a named function from the specified module.<br>
+
+```FARPROC``` : A pointer type for holding function addresses.
+
+       
