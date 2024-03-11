@@ -160,9 +160,55 @@ The function pointer retrieved from GetProcAddress is typically a generic pointe
 void* pfnMyFunction = GetProcAddress(hubModule, "fetchTeacher");
 CartMan::ITeacher* (*actualFetchTeacher)(void) = (CartMan::ITeacher*(*)())pfnMyFunction;
 ```
-
 ```GetProcAddress()```: A Windows API function that retrieves the address of a named function from the specified module.<br> it it returns `void*` pointer
 
 ```FARPROC``` : A pointer type for holding function addresses.
+
+
+# Handling Exception 
+
+We can use macro to catch exceptions this ways:
+
+```
+// ExceptionFile.cpp
+
+#pragma once
+#define	TRY_API		try							\
+		 	{								
+#define	CATCH_API   	} 							\
+			catch (std::exception& e)				\
+			{  							\
+				printf("Exception '%s' caught in : %s", e.what(), __FUNCTION__);	\
+			}										\
+			catch (...)									\
+			{										\
+				printf("Unknown exception caught in : %s", __FUNCTION__);		\
+			}
+```
+
+You can use file in general:
+```
+#include <iostream>
+#include <vector>
+#include "ExceptionFile.h"
+
+void generateVectorError() 
+TRY_API
+{
+	std::vector<int> vec{ 1,2,3,4 };
+
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << vec.at(i);
+	}
+}
+CATCH_API
+
+int main() {
+
+	generateVectorError();
+	return 0;
+}
+```
 
        
