@@ -248,4 +248,6 @@ int main()
 In this line, the macro __GetNextFlowBYTE__ is invoked with the src pointer as an argument. The macro expands to the corresponding code and performs the following actions: <br>
 
 The value at the src pointer is dereferenced and assigned to the char2 variable.
-If the value of char2 is less than 0x80 or greater than or equal to 0xc0, implying that it is not a valid UTF-8 continuation byte, the function will return a question mark '?'.
+If the value of decodedChar is less than 0x80 or greater than or equal to 0xc0, implying that it is not a valid UTF-8 continuation byte, the function will return a question mark '?'.
+
+Making change in ptr also change decodedChar as both are pointing to same address
