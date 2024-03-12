@@ -267,5 +267,4 @@ Then here are some ways to explore that:
   </Target>
 ```
 
-2. Either put a command to run that script in the project Properties -> Build Events -> Pre/Post-Build/Link Events : E.g. ```call "C:\Users\pk152268\source\repos\Development2\CtrlCell\Source\alertmap_generator.bat"```
-3. 
+2. Make a C# file generate a .bat script in the project Properties -> Build Events -> Pre/Post-Build/Link Events : E.g. ```call "C:\Users\pk152268\source\repos\Development2\CtrlCell\Source\alertmap_generator.bat"```
