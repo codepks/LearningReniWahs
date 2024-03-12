@@ -247,6 +247,15 @@ int main()
 
 In this line, the macro __GetNextFlowBYTE__ is invoked with the src pointer as an argument. The macro expands to the corresponding code and performs the following actions: <br>
 
+# Running a project executable
+This is a different type of running :
+If a project compiles to a .exe file and 
+- If you want to run that project like a script
+- And you want to make the script run while building some other solution
+
+Then here are some ways to explore that:
+1. Either put a command to run that script in the project Properties -> Build Events -> Pre/Post-Build/Link Events : E.g. ```call "C:\Users\pk152268\source\repos\Development2\CtrlCell\Source\alertmap_generator.bat"```
+
 The value at the src pointer is dereferenced and assigned to the char2 variable.
 If the value of decodedChar is less than 0x80 or greater than or equal to 0xc0, implying that it is not a valid UTF-8 continuation byte, the function will return a question mark '?'.
 
