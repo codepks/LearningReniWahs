@@ -268,3 +268,30 @@ Then here are some ways to explore that:
 ```
 
 2. Make a C# file generate a .bat script in the project Properties -> Build Events -> Pre/Post-Build/Link Events : E.g. ```call "C:\Users\pk152268\source\repos\Development2\CtrlCell\Source\alertmap_generator.bat"```
+
+# Loading one .dll from another .dll file
+
+Suppose if you want to run a A.dll from B.dll file
+Way 1 : 
+1. Create a function `SetupLogger()` in `A` solution to dynamically load B.dll library using LoadLibrary("A.dll")
+2. Trigger that function call in dllmain.cpp under ```DLL_PROCESS_ATTACH:```
+
+ Way 2 :
+ 1. Create a header file in `A` solution which can a function called `SetupLogger()`
+ 2. Create another file in B workspace and `#include<>` that file, insde that file create a struct/class -> which calls that `SetupLogger()` function
+ 3. Now make a static variable out of that structure which gurantees the loading of the dll being taken care as long as the program exists
+
+```
+#include "shared/LoggerSetup.h"
+
+//=========================================================================================================================!
+
+struct BoggerSetup
+{
+	BoggerSetup()
+	{
+		setupBoggerForRenAMP();
+	}
+};
+static BoggerSetup firstThing;
+```
