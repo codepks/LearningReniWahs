@@ -211,4 +211,41 @@ int main() {
 }
 ```
 
-       
+# Decoding using a macro    
+
+```
+#include <iostream>
+#define __GetNextFlowBYTE__(ptr) *ptr; if ((unsigned char)*ptr < 0x80 || (unsigned char)*ptr >= 0xc0) return '?'; else ++ptr;
+
+class CString {
+public:
+    unsigned DecodeUTF8(const char*& src);
+};
+
+unsigned CString::DecodeUTF8(const char*& src)
+{
+
+    unsigned char char2 = __GetNextFlowBYTE__(src);
+    // Additional processing or handling of the decoded character can be performed here
+    return char2;
+}
+
+int main()
+{
+    const char* utf8String = "\xE2\x82\xAC"; // UTF-8 encoded Euro symbol (€)
+    CString myString;
+
+    unsigned decodedChar = myString.DecodeUTF8(utf8String);
+    std::cout << "Decoded character: " << decodedChar << std::endl;
+
+    return 0;
+}
+```
+
+**Explaination**
+#define __GetNextFlowBYTE__(ptr) *ptr; if ((unsigned char)*ptr < 0x80 || (unsigned char)*ptr >= 0xc0) return '?'; else ++ptr; <br>
+
+In this line, the macro __GetNextFlowBYTE__ is invoked with the src pointer as an argument. The macro expands to the corresponding code and performs the following actions: <br>
+
+The value at the src pointer is dereferenced and assigned to the char2 variable.
+If the value of char2 is less than 0x80 or greater than or equal to 0xc0, implying that it is not a valid UTF-8 continuation byte, the function will return a question mark '?'.
