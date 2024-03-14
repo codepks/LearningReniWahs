@@ -300,3 +300,35 @@ static BoggerSetup firstThing;
 > **How above code works ?**
 > A static variable declared in a file which is initialized in data segment of the code before the start of the main function.
 > Also it should be decalred in .cpp file only
+
+## Assembly lanugage explaination
+
+```
+#include<iostream>
+
+static int i = 1;
+int main()
+{
+    std::cout << i;
+    return 0;
+}
+```
+
+The above code's ASM language is :
+```
+i:
+        .long   1
+main:
+        push    rbp
+        mov     rbp, rsp
+        mov     eax, DWORD PTR i[rip]
+        mov     esi, eax
+        mov     edi, OFFSET FLAT:_ZSt4cout
+        call    std::basic_ostream<char, std::char_traits<char> >::operator<<(int)
+        mov     eax, 0
+        pop     rbp
+        ret
+```
+
+If you see in the code above, int i gets intialized even before the main function
+If you see 
