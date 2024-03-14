@@ -282,6 +282,7 @@ Way 1 :
  3. Now make a static variable out of that structure which gurantees the loading of the dll being taken care as long as the program exists
 
 ```
+//LoggerIni.cpp
 #include "shared/LoggerSetup.h"
 
 //=========================================================================================================================!
@@ -293,5 +294,9 @@ struct BoggerSetup
 		setupBoggerForRenAMP();
 	}
 };
-static BoggerSetup firstThing;
+static BoggerSetup firstThing; 
 ```
+
+> **How above code works ?**
+> A static variable declared in a file which is initialized in data segment of the code before the start of the main function.
+> Also it should be decalred in .cpp file only
