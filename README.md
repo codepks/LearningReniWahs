@@ -300,7 +300,7 @@ static BoggerSetup firstThing;
 
 > **How above code works ?**
 > A static variable declared in a file which is initialized in data segment of the code before the start of the main function.
-> Also it should be decalred in .cpp file only
+> Also it should be decalred in .cpp file only ??
 
 ## Assembly lanugage explaination
 
