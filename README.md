@@ -300,7 +300,7 @@ static BoggerSetup firstThing;
 
 > **How above code works ?**
 > A static variable declared in a file which is initialized in data segment of the code before the start of the main function.
-> Also it should be decalred in .cpp file only ??
+> Also it should be decalred in .cpp file only as only .cpp files get converted in object files where the linker would find the function definition.
 
 **If I delete LoggerIni.cpp file from the solution then I get linker error, why ?** <br>
 - VARIADIC_LOG() is the function that utilises *pLogger (declared in BoggerSetup headerfile)
