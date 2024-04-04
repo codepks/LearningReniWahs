@@ -338,3 +338,42 @@ main:
 
 If you see in the code above, int i gets intialized even before the main function
 If you see 
+
+
+# Custom Error Handling Classes
+
+class hierarchy : http://www.tutorialspoint.com/images/cpp_exceptions.jpg
+<br>
+
+```
+class NotImplemented : public std::logic_error
+{
+public:
+	explicit NotImplemented() : std::logic_error("Incomplete implementation!"){}
+	virtual ~NotImplemented(){}
+};
+```
+The above class is particularly used in case of forced implementation of an interface and you don't have the implementation for the same.
+
+```
+class HardwareError : public std::runtime_error
+{
+public:
+	using base = std::runtime_error;
+	explicit HardwareError(const char * msg) : base(msg){}
+	virtual ~HardwareError(){}
+};
+```
+Hardware Error
+
+```
+class LogicError : public std::logic_error
+{
+public:
+	using base = std::logic_error;
+	explicit LogicError(const char * msg) : base(msg){}
+	virtual ~LogicError(){}
+};
+```
+Logic Error
+
