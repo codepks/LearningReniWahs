@@ -344,6 +344,7 @@ If you see
 
 class hierarchy : http://www.tutorialspoint.com/images/cpp_exceptions.jpg
 <br>
+The class below is particularly used in case of forced implementation of an interface and you don't have the implementation for the same.
 
 ```
 class NotImplemented : public std::logic_error
@@ -353,8 +354,8 @@ public:
 	virtual ~NotImplemented(){}
 };
 ```
-The above class is particularly used in case of forced implementation of an interface and you don't have the implementation for the same.
 
+**Hardware Error**
 ```
 class HardwareError : public std::runtime_error
 {
@@ -364,8 +365,9 @@ public:
 	virtual ~HardwareError(){}
 };
 ```
-Hardware Error
 
+
+**Logic Error**
 ```
 class LogicError : public std::logic_error
 {
@@ -375,5 +377,4 @@ public:
 	virtual ~LogicError(){}
 };
 ```
-Logic Error
 
