@@ -378,3 +378,37 @@ public:
 };
 ```
 
+# UPtrBuffer
+```
+using UPtrBuffer = std::unique_ptr < char[] > ;
+```
+
+Here we are making a unique_pointer pointing to character array. <br>
+Here you don't have to specifically take care of delete[] operator. <br>
+
+```
+#include <memory>
+
+// Type alias
+using UPtrBuffer = std::unique_ptr<char[]>;
+
+int main() {
+    // Create a UPtrBuffer
+    UPtrBuffer buffer = std::make_unique<char[]>(10);
+
+    // Access and modify elements of the buffer
+    buffer[0] = 'H';
+    buffer[1] = 'e';
+    buffer[2] = 'l';
+    buffer[3] = 'l';
+    buffer[4] = 'o';
+    buffer[5] = '\0';
+
+    // Print the content of the buffer
+    std::cout << buffer.get() << std::endl;
+
+    // The memory will be automatically deallocated when buffer goes out of scope
+
+    return 0;
+}
+```
