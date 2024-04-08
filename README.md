@@ -412,3 +412,36 @@ int main() {
     return 0;
 }
 ```
+
+# callback class templates
+
+Here in hte class below we have angular brackets even after the class name. <br>
+This is to restrict the class to work with certain types only.<br>
+In this case, CR is a return type and Args.. is argument <br>
+```
+template < typename CR, typename ...Args >
+class Event<CR(Args...)> : private EventSource < DelegateBase <CR(Args...)> >
+{
+public:
+
+	Event() = default;
+
+	template <class TDel>
+	void operator +=(Delegate<TDel> & del)
+	{
+		this->bind(del, del.getFunctor());
+	}
+
+	template <class TDel>
+	void operator -=(Delegate<TDel> & del)
+	{
+		del.unbind();
+	}
+
+	void operator()(Args...args)
+	{
+		this->raise(std::forward<Args>(args)...);
+	}
+};
+
+```
