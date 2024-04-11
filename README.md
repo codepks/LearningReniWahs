@@ -454,6 +454,9 @@ public:
 5. Either you keep it out of Solution like a folder containing `.h` files or if kept in a solution then expose it using `extern "C"`
 
 # Different ways to load dll from one project to another
+
+NOTE: You can always check if the dll is loaded or not by putting a debug pointer to the dllmain of the dll project
+
 ## Adding a third party library
 If your 3rd party library has only header and `.lib` files then 
 1. You need to add the header file directors in the project->properties->C++->include directories
@@ -472,3 +475,4 @@ If your 3rd party library has only header and `.lib` files then
 ### Static Loading
 1. This comes into use when you want to load the dependent dlls
 2. You can add the references of the dll in the Project->Properties->Addreference
+
