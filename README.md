@@ -462,3 +462,13 @@ If your 3rd party library has only header and `.lib` files then
 4. You may need to add pre-processor macros too in the project like project->properties->Preprocessor->Preprocessor Definitions
 
 [source](https://www.youtube.com/watch?v=j13iYc6zRuk)
+
+## Loading a .dll from another project
+### Dynamic Loading
+1. You can either using LoadLibrary to dynamically load the dll
+2. This would of use when you are putting conditions on loading the dll
+3. Or if the dll is located in some other path
+
+### Static Loading
+1. This comes into use when you want to load the dependent dlls
+2. You can add the references of the dll in the Project->Properties->Addreference
