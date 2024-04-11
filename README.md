@@ -452,3 +452,4 @@ public:
 3. If they are in different solution then make sure the **class interfaces are exposed properly** in order to access in another solution using extern "C" 
 4. First you should check if it has been anywhere and try to use the same calling method.
 5. Either you keep it out of Solution like a folder containing `.h` files or if kept in a solution then expose it using `extern "C"`
+
