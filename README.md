@@ -453,3 +453,10 @@ public:
 4. First you should check if it has been anywhere and try to use the same calling method.
 5. Either you keep it out of Solution like a folder containing `.h` files or if kept in a solution then expose it using `extern "C"`
 
+# Different ways to load dll from one project to another
+## Adding a third party library
+If your 3rd party library has only header and `.lib` files then 
+1. You need to add the header file directors in the project->properties->C++->include directories
+2. If you have .lib files too then you need to put in project->properties->Linker->Additional library directories
+3. You may need to put in some additional dependencies or `.dlls` for your 3rd party library which you can put in using projecct->properties->Linker->Input
+4. You may need to add pre-processor macros too in the project like project->properties->Preprocessor->Preprocessor Definitions
