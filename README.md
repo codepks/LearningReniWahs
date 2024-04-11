@@ -475,4 +475,5 @@ If your 3rd party library has only header and `.lib` files then
 ### Static Loading
 1. This comes into use when you want to load the dependent dlls
 2. You can add the references of the dll in the Project->Properties->Addreference
+3. Make sure the dll is the same directory as the `.exe` file or the project `.dll` file
 
