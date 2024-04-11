@@ -460,3 +460,4 @@ If your 3rd party library has only header and `.lib` files then
 2. If you have .lib files too then you need to put in project->properties->Linker->Additional library directories
 3. You may need to put in some additional dependencies or `.dlls` for your 3rd party library which you can put in using projecct->properties->Linker->Input
 4. You may need to add pre-processor macros too in the project like project->properties->Preprocessor->Preprocessor Definitions
+(source)[https://www.youtube.com/watch?v=j13iYc6zRuk]
