@@ -477,3 +477,9 @@ If your 3rd party library has only header and `.lib` files then
 2. You can add the references of the dll in the Project->Properties->Addreference
 3. Make sure the dll is the same directory as the `.exe` file or the project `.dll` file
 
+
+# 3d Party Library 
+1. The package management is done via nuget packets.
+2. All the required header files are included in the "External Dependencies" under the project
+3. So installing the nuget package not only manages your dll but your header file too
+4. From here you can directly include the header file like `rapidjson\prettywriter.h` instead of rapidjson1.23\fdf\rgfd\prettywriter.h`
